@@ -178,7 +178,84 @@
   </h1>
   
   <article class="passage-article">
-    
+    <h1 id="浮动和定位"><a href="#浮动和定位" class="headerlink" title="浮动和定位"></a>浮动和定位</h1><h5 id="1-CSS标准文档流特性："><a href="#1-CSS标准文档流特性：" class="headerlink" title="1. CSS标准文档流特性："></a>1. CSS标准文档流特性：</h5><ol>
+<li>行内、行内块元素在一行显示的时候会有空白折叠现象</li>
+<li>在标准文档流中，元素的布局默认情况下是从做向右、从上向下依次布局的。一行放不完换行放。</li>
+<li>图片和文字在一起，默认是高矮不等基线对齐</li>
+<li>只有标准文档流才行内、块级和块级块级元素</li>
+</ol>
+<p>我们默认写的网页布局都是在标准文档流下。</p>
+<p> 什么情况下不在标准文档流下：</p>
+<ol>
+<li>浮动   会脱标定位</li>
+<li>定位    也会脱标(不是所有的定位都会脱标)</li>
+</ol>
+<h5 id="css浮动"><a href="#css浮动" class="headerlink" title="css浮动"></a>css浮动</h5><p>问题：div是块级元素，默认情况下独占一行。我们现在的需求是让三个div在一行显示？</p>
+<p>解决方案1：我们可以给div设置display:inline-block，作用将块级元素div转换成行内块级元素。但是缺陷是有空白折叠现象。</p>
+<p>解决方案2：我们可以使用float:left/right来解决</p>
+<p>浮动有两个值：</p>
+<p>float:left;   左浮动</p>
+<p>float:right;   右浮动</p>
+<p><img src="C:\Users\student\Desktop\笔记里的图片\Snipaste_2019-04-08_21-47-03.png" alt></p>
+<h5 id="css浮动特性"><a href="#css浮动特性" class="headerlink" title="css浮动特性"></a>css浮动特性</h5><ol>
+<li><p>脱标 ：浮动的元素不在遵循标准文档流的特性</p>
+</li>
+<li><p>贴边 ：浮动的元素会紧密的连接在一起</p>
+</li>
+<li><p>字围 ：浮动的元素挡住没有浮动的元素，但是挡不住没有浮动元素中的文字</p>
+</li>
+<li><p>收缩 : 如果没有给浮动的元素设置宽高，默认收缩为内容的宽高</p>
+<p>5.浮动的元素是贴着父亲的内容去布局的，不是贴着边框布局的</p>
+</li>
+</ol>
+<h5 id="2-清除浮动"><a href="#2-清除浮动" class="headerlink" title="2.清除浮动"></a>2.清除浮动</h5><ol>
+<li>给父亲设置overflow:hidden;</li>
+<li>可以使用隔墙法(用的不多) ： 就是在有影响的元素之间加上一堵墙 <div style="clear: both"></div></li>
+</ol>
+<p>clear:left/right/both;  分别表示清除左浮动/右浮动/浮动带来的影响</p>
+<ol>
+<li>给父元素一个确定的高度(用的也不多)</li>
+<li>使用after伪元素来清除浮动：只需要给父元素添加clearfix样式就可以了</li>
+</ol>
+<p>.clearfix{</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*zoom: 1; /*凡是加*号的属性是给ie用的*/</span><br></pre></td></tr></table></figure>
+<p> }</p>
+<p> .clearfix::after {</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> clear: both; /*清除浮动*/</span><br><span class="line"></span><br><span class="line"> height: 0;</span><br><span class="line"></span><br><span class="line"> overflow: hidden;</span><br><span class="line"></span><br><span class="line"> display: block;</span><br><span class="line"></span><br><span class="line"> visibility: hidden;</span><br><span class="line"></span><br><span class="line"> content: &quot;.&quot;;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用before和after双伪元素来清除浮动 ： 给父亲添加clearfix的样式</li>
+</ol>
+<p>.clearfix::before,.clearfix::after { </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  content:&quot;&quot;;</span><br><span class="line"></span><br><span class="line">  background: yellow;</span><br><span class="line"></span><br><span class="line">  display:table;  </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.clearfix::after &#123;</span><br><span class="line"></span><br><span class="line">  clear:both;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.clearfix &#123;</span><br><span class="line"></span><br><span class="line">  *zoom:1;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-相对定位"><a href="#3-相对定位" class="headerlink" title="3. 相对定位"></a>3. 相对定位</h5><p> 形影分离，老家留坑，不脱标</p>
+<p>只有定位了盒子才可以使用top和left属性</p>
+<p>div{</p>
+<p>position:relative;</p>
+<p>top:100px;</p>
+<p>left:100px;</p>
+<p>}</p>
+<h5 id="4-绝对定位"><a href="#4-绝对定位" class="headerlink" title="4.绝对定位"></a>4.绝对定位</h5><p> div{</p>
+<p>position:absolute;</p>
+<p>top:100px;</p>
+<p>left:100px;</p>
+<p>}</p>
+<p>参照系是第一个定位了的父亲，会脱标</p>
+<p>子绝父相/子绝父绝</p>
+<p>绝对定位了的盒子居中问题：</p>
+<p>.box{</p>
+<p>   position:absolute;</p>
+<p>   left:50%;</p>
+<p>   width:100px;</p>
+<p>   height:100px;</p>
+<p>   margin-left:-50px;</p>
+<p>}</p>
+<h5 id="5-固定定位"><a href="#5-固定定位" class="headerlink" title="5.固定定位"></a>5.固定定位</h5><p>参照是浏览器窗口左上角，不论怎么滚动页面，元素始终不懂，固定定位会脱标</p>
+<p>.box{</p>
+<p>   position:fixed;</p>
+<p>   left:100px;</p>
+<p>   top:100px;</p>
+<p>}</p>
+
   </article>
   <aside class="table-content" id="site-toc">
   <div class="table-content-title">
@@ -186,7 +263,7 @@
     <span>目录</span>
   </div>
   <div class="table-content-main">
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#浮动和定位"><span class="toc-text">浮动和定位</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-CSS标准文档流特性："><span class="toc-text">1. CSS标准文档流特性：</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#css浮动"><span class="toc-text">css浮动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#css浮动特性"><span class="toc-text">css浮动特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-清除浮动"><span class="toc-text">2.清除浮动</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-相对定位"><span class="toc-text">3. 相对定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-绝对定位"><span class="toc-text">4.绝对定位</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-固定定位"><span class="toc-text">5.固定定位</span></a></li></ol></li></ol>
   </div>
 </aside>
   
