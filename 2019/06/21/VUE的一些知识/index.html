@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="maojinpeng">
+  
+  
+  <title>VUE的一些知识 | Hexo</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Hexo, Theme-AD">
+  
+
+  
+  <meta name="description" content="冒金鹏的小博">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "maojinpeng",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/maojinpeng.github.io/"
+  };
+</script>
+
+  <script src="/maojinpeng.github.io/vendor/sha256.min.js"></script>
+<script src="/maojinpeng.github.io/js/auth.js"></script>
+<script src="/maojinpeng.github.io/js/index.js"></script>
+<script src="/maojinpeng.github.io/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/maojinpeng.github.io/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/maojinpeng.github.io/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/maojinpeng.github.io/css/index.css">
+<link rel="stylesheet" href="/maojinpeng.github.io/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/maojinpeng.github.io/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 属于我的世界</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/maojinpeng.github.io/" target="_self">首页</a>
+      
+        <a href="/maojinpeng.github.io/archives/" target="_self">归档</a>
+      
+        <a href="/maojinpeng.github.io/tags/" target="_self">标签</a>
+      
+        <a href="/maojinpeng.github.io/categories/" target="_self">分类</a>
+      
+        <a href="/maojinpeng.github.io/friends/" target="_self">友链</a>
+      
+        <a href="/maojinpeng.github.io/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/maojinpeng" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/maojinpeng.github.io/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2019-06-21
+    </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    VUE的一些知识
+  </h1>
+  
+  <article class="passage-article">
+    <h1 id="Vue指令"><a href="#Vue指令" class="headerlink" title="Vue指令"></a>Vue指令</h1><h3 id="1-0-常用的指令"><a href="#1-0-常用的指令" class="headerlink" title="1.0 常用的指令"></a>1.0 常用的指令</h3><p>v-cloak  :  解决插值表达式的闪烁问题</p>
+<p>v-text  : 替换标签的文本内容</p>
+<p>v-html  : 替换标签的html内容</p>
+<p>v-model  : 数据的双向绑定</p>
+<p>v-bind：绑定标签属性的</p>
+<p>v-on : 绑定事件的</p>
+<p>v-for ：循环遍历的</p>
+<p>v-if ： 条件判断的</p>
+<p>v-show ：判断是否是要隐藏</p>
+<h3 id="1-1-vue的样式操作"><a href="#1-1-vue的样式操作" class="headerlink" title="1.1 vue的样式操作"></a>1.1 vue的样式操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;div class=&quot;thin italic active red&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- vue中class操作 --&gt;</span><br><span class="line">        &lt;div :class=&quot;&apos;red&apos;&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div :class=&quot;[&apos;red&apos;,&apos;active&apos;]&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;!--多个样式用一个数组 --&gt;</span><br><span class="line">        &lt;div :class=&quot;[&apos;red&apos;,&apos;active&apos;,flag?&apos;italic&apos;:&apos;&apos;]&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">        &lt;!--flag为true就为italic否则就没有 --&gt;</span><br><span class="line">        &lt;div :class=&quot;[&apos;red&apos;,&apos;active&apos;,&#123;&apos;italic&apos;:flag&#125;]&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div :class=&quot;classObj&quot;&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        </span><br><span class="line">        &lt;div style=&quot;color:red&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">        &lt;!-- vue中style操作 --&gt;</span><br><span class="line">        &lt;div :style=&quot;&#123;color:&apos;red&apos;&#125;&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div :style=&quot;&#123;color:blue&#125;&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div :style=&quot;styleObj1&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;div :style=&quot;[styleObj1,styleObj2]&quot;&gt;xx&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var vm = new Vue(&#123;</span><br><span class="line">        el:&quot;#app&quot;,</span><br><span class="line">        data:&#123;</span><br><span class="line">            msg:&quot;hello&quot;,</span><br><span class="line">            flag:true,</span><br><span class="line">            classObj:&#123;red:true,thin:true&#125;,</span><br><span class="line">            blue:&quot;blue&quot;,</span><br><span class="line">            styleObj1:&#123;background:&apos;yellow&apos;,border:&apos;1px solid blue&apos;&#125;,</span><br><span class="line">            styleObj2:&#123;marginLeft:&quot;100px&quot;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-vue中的循环"><a href="#1-2-vue中的循环" class="headerlink" title="1.2 vue中的循环"></a>1.2 vue中的循环</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--循环数组中嵌套对象--&gt;</span><br><span class="line">        &lt;div class=&quot;users&quot;&gt;</span><br><span class="line">            &lt;div v-for=&quot;item in users&quot;&gt;</span><br><span class="line">                &#123;&#123;item.name&#125;&#125;  </span><br><span class="line">                &#123;&#123;item.age&#125;&#125;</span><br><span class="line">                &#123;&#123;item.gender&#125;&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 循环数字 --&gt;</span><br><span class="line">        &lt;div v-for=&quot;count in 10&quot;&gt;</span><br><span class="line">            &lt;p&gt;&#123;&#123;count&#125;&#125;&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!-- 将数据源的信息显示在页面 </span><br><span class="line">             注意点：v-for在渲染列表的时候使用的是就地复用策略，不会移动 DOM 元素来匹配数据项的顺序，因此如果数据项的顺序发生改变，页面会出现混乱</span><br><span class="line">             为了解决这个问题，Vue推荐我们给每个节点绑定一个key以追踪每个节点的身份，从而重用和重新排序现有元素</span><br><span class="line"></span><br><span class="line">             v-for 循环的时候，key 属性的值只能是number或者string，否则报错，v-for的key建议是唯一的。</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;div v-for=&quot;item in users&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">            &lt;input type=&quot;checkbox&quot;&gt;</span><br><span class="line">            &#123;&#123;item.id&#125;&#125;--&gt;&#123;&#123;item.name&#125;&#125;</span><br><span class="line">        &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-v-if和v-show"><a href="#1-3-v-if和v-show" class="headerlink" title="1.3 v-if和v-show"></a>1.3 v-if和v-show</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">        &lt;!-- 如果v-if值不为true,则不会创建标签</span><br><span class="line">             当我们在切换v-if的值的时候，会频繁的创建和移除标签</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;h3 v-if=&quot;flag&quot;&gt;这是用v-if控制的元素&lt;/h3&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!-- 如果v-show的值不为true，会创建标签，只不过标签是隐藏的</span><br><span class="line">             当我们在切换v-show的值的时候，会频繁的该display属性值</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;h3 v-show=&quot;flag&quot;&gt;这是用v-show控制的元素&lt;/h3&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &lt;!--</span><br><span class="line">            v-if和v-show比较：一般来说，v-if 有更高的切换开销，而 v-show 有更高的初始渲染开销。</span><br><span class="line">            因此，如果需要非常频繁地切换，则使用 v-show 较好；如果在运行时条件很少改变，则使用 v-if 较好</span><br><span class="line">        --&gt;</span><br><span class="line">        &lt;input type=&quot;button&quot; value=&quot;切换&quot; @click=&quot;flag=!flag&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-4-过滤器"><a href="#1-4-过滤器" class="headerlink" title="1.4 过滤器"></a>1.4 过滤器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;app&quot;&gt;</span><br><span class="line">       &#123;&#123; msg|msgFormat(&apos;我&apos;) &#125;&#125;</span><br><span class="line">        &lt;!-- msg是要过滤的文本 |是管道符  msgFormat是过滤器 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">//定义全局过滤器</span><br><span class="line">   Vue.filter(&quot;msgFormat&quot;,function(msg,t1)&#123;</span><br><span class="line">       return msg.replace(t1,&quot;熊二&quot;);</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   var vm = new Vue(&#123;</span><br><span class="line">       el:&quot;#app&quot;,</span><br><span class="line">       data:&#123;</span><br><span class="line">           msg:&quot;我曾经是一个追风的少年~~~~~~&quot;</span><br><span class="line">       &#125;,</span><br><span class="line">       //定义私有过滤器</span><br><span class="line">       filters: &#123;</span><br><span class="line">           /*</span><br><span class="line">           过滤器的第一个参数：要过滤的那个文本</span><br><span class="line">                  第二个参数：要被替换的内容</span><br><span class="line">                  第三个参数：替换的内容</span><br><span class="line">           */</span><br><span class="line">           msgFormat:function(msg,t1)&#123;</span><br><span class="line">               return msg.replace(t1,&quot;熊大&quot;);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">   //当有同名的过滤器的时候，采用的是就近原则(优先使用私有过滤器)</span><br></pre></td></tr></table></figure>
+<h3 id="1-5-按键修饰符"><a href="#1-5-按键修饰符" class="headerlink" title="1.5 按键修饰符"></a>1.5 按键修饰符</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!--使用自定义按键修饰符--&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; value=&quot;上一页&quot; @keyup.up=&quot;myup&quot;&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; value=&quot;下一页&quot; @keyup.down=&quot;mydown&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//自定义按键修饰符  注意热键冲突问题</span><br><span class="line">   Vue.config.keyCodes.up = 118;</span><br><span class="line">   Vue.config.keyCodes.down = 121;</span><br></pre></td></tr></table></figure>
+<h3 id="1-6-自定义指令"><a href="#1-6-自定义指令" class="headerlink" title="1.6 自定义指令"></a>1.6 自定义指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//定义私有指令</span><br><span class="line">        directives:&#123;</span><br><span class="line">            focus:&#123;</span><br><span class="line">                //bind方法 只调用一次，当指令第一次绑定到元素时调用</span><br><span class="line">                //在bind方法中元素并没有被插入到dom文档对象中，所以此时写el.focus()无效</span><br><span class="line">                bind(el)&#123;</span><br><span class="line">                    console.log(&quot;bind&quot;)</span><br><span class="line">                    //el参数是绑定指定的那个页面元素</span><br><span class="line">                    //el.focus();</span><br><span class="line">                &#125;,</span><br><span class="line">                //inserted 只会触发一次，是被绑定元素插入父节点时调用 </span><br><span class="line">                inserted(el)&#123;</span><br><span class="line">                    console.log(&quot;inserted&quot;)</span><br><span class="line">                    el.focus();</span><br><span class="line">                &#125;,</span><br><span class="line">                //当被绑定的元素更新的时候，会执行 updated，可能会触发多次</span><br><span class="line">                update(el)&#123;</span><br><span class="line">                    console.log(&quot;update&quot;)</span><br><span class="line">                    console.log(el,&quot;update&quot;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        methods:&#123;</span><br><span class="line">            toggle()&#123;  </span><br><span class="line">                this.flag = !this.flag;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//定义全局指令</span><br><span class="line">   Vue.directive(&apos;font_weight&apos;,&#123;</span><br><span class="line">       //当被绑定的元素插入到DOM中时</span><br><span class="line">       inserted:function(el,binding)&#123;</span><br><span class="line">           el.style.fontWeight=binding.value;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">   Vue.directive(&apos;color&apos;, &#123;</span><br><span class="line">       // 当被绑定的元素插入到 DOM 中时……</span><br><span class="line">       inserted: function (el,binding) &#123;</span><br><span class="line">           el.style.color = binding.value;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Vue指令"><span class="toc-text">Vue指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-0-常用的指令"><span class="toc-text">1.0 常用的指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-vue的样式操作"><span class="toc-text">1.1 vue的样式操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-vue中的循环"><span class="toc-text">1.2 vue中的循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-v-if和v-show"><span class="toc-text">1.3 v-if和v-show</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-过滤器"><span class="toc-text">1.4 过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-按键修饰符"><span class="toc-text">1.5 按键修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-自定义指令"><span class="toc-text">1.6 自定义指令</span></a></li></ol></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 冒金鹏</div>
+      
+        <div>
+          原文链接: 
+          <a href target="_blank">https://maojinpeng.github.io/2019/06/21/VUE的一些知识/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">博客推荐</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://godbmw.com/" target="_blank">GodBMW</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">系列教程</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+          </span>
+        
+      </div>
+    
+      <div class="site-footer-col">
+        <h5 class="site-footer-title">抓到我</h5>
+        
+          <span class="site-footer-item">
+            <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">掘金</a>
+          </span>
+        
+          <span class="site-footer-item">
+            <a href="https://segmentfault.com/" target="_blank">思否</a>
+          </span>
+        
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yuanxin.me@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+        
+          <div>
+            <img src="/maojinpeng.github.io/images/wechat.png" alt="WeChat">
+            
+              <p>WeChat</p>
+            
+          </div>
+        
+          <div>
+            <img src="/maojinpeng.github.io/images/alipay.png" alt="AliPay">
+            
+              <p>AliPay</p>
+            
+          </div>
+        
+      </div>
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="javascript:void(0);" data-enable="false">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/maojinpeng.github.io/2019/05/21/2048游戏代码详解/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    <a href="javascript:void(0);" id="site-reward">
+      <i class="fa fa-thumbs-up"></i>
+    </a>
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  <script src="/maojinpeng.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
